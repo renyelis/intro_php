@@ -3,79 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>funciones para manipular cadenas</title>
+    <title>Funciones para manipular cadenas</title>
 </head>
 <body>
-    <h1>funciones para manipular cadenas</h1>
+    <h1>Funciones para manipular cadenas</h1>
     <?php
-// Cadena de ejemplo
-$cadena = "Hola Mundo!";
+        // substr
+        $cadena = "Hola, Mundo!";
+        $subcadena = substr($cadena, 7, 5); // Obtiene "Mundo"
+        echo "<p>substr: $subcadena</p>";
 
-// 1. substr — Extrae una parte de la cadena
-// Extrae una subcadena desde el índice 0 con una longitud de 4 caracteres
-$subcadena = substr($cadena, 0, 4);
-echo "substr: $subcadena\n"; // Salida: Hola
+        // ord
+        $caracter = "A";
+        $valor_ascii = ord($caracter); // Obtiene 65
+        echo "<p>ord: $valor_ascii</p>";
 
-// 2. ord — Obtiene el valor ASCII del primer carácter de una cadena
-// Obtiene el valor ASCII del primer carácter de la cadena
-$valor_ascii = ord($cadena[0]);
-echo "ord: $valor_ascii\n"; // Salida: 72 (que es el valor ASCII de 'H')
+        // printf
+        $nombre = "Carlos";
+        $edad = 30;
+        printf("<p>printf: Mi nombre es %s y tengo %d años.</p>", $nombre, $edad);
 
-// 3. printf — Imprime una cadena formateada
-// Imprime la cadena con un formato específico
-printf("printf: %s\n", $cadena); // Salida: printf: Hola Mundo!
+        // sprintf
+        $formateado = sprintf("sprintf: Mi nombre es %s y tengo %d años.", $nombre, $edad);
+        echo "<p>$formateado</p>";
 
-// 4. sprintf — Devuelve una cadena formateada
-// Crea una cadena formateada sin imprimirla
-$cadena_formateada = sprintf("sprintf: %s", $cadena);
-echo "$cadena_formateada\n"; // Salida: sprintf: Hola Mundo!
+        // strtolower
+        $mayusculas = "HOLA, MUNDO!";
+        $minusculas = strtolower($mayusculas); // Obtiene "hola, mundo!"
+        echo "<p>strtolower: $minusculas</p>";
 
-// 5. strtolower — Convierte todos los caracteres de la cadena a minúsculas
-// Convierte la cadena a minúsculas
-$cadena_minusculas = strtolower($cadena);
-echo "strtolower: $cadena_minusculas\n"; // Salida: hola mundo!
+        // strtoupper
+        $minusculas = "hola, mundo!";
+        $mayusculas = strtoupper($minusculas); // Obtiene "HOLA, MUNDO!"
+        echo "<p>strtoupper: $mayusculas</p>";
 
-// 6. strtoupper — Convierte todos los caracteres de la cadena a mayúsculas
-// Convierte la cadena a mayúsculas
-$cadena_mayusculas = strtoupper($cadena);
-echo "strtoupper: $cadena_mayusculas\n"; // Salida: HOLA MUNDO!
+        // ereg
+        $cadena = "123abc";
+        if (ereg("^[0-9]+", $cadena)) {
+            echo "<p>ereg: La cadena comienza con números.</p>";
+        }
 
-// 7. ereg — (Obsoleto) Busca una expresión regular en una cadena
-// Nota: ereg está obsoleto en PHP 5.3.0 y versiones posteriores. Se recomienda usar preg_match en su lugar.
-if (function_exists('ereg')) {
-    $patron = "Mundo";
-    $match = ereg($patron, $cadena);
-    echo "ereg: " . ($match ? "Encontrado" : "No encontrado") . "\n";
-} else {
-    echo "ereg está obsoleto y no está disponible en esta versión de PHP.\n";
-}
-
-// 8. eregi — (Obsoleto) Busca una expresión regular (insensible a mayúsculas/minúsculas)
-// Nota: eregi está obsoleto en PHP 5.3.0 y versiones posteriores. Se recomienda usar preg_match en su lugar.
-if (function_exists('eregi')) {
-    $patron_i = "mundo";
-    $match_i = eregi($patron_i, $cadena);
-    echo "eregi: " . ($match_i ? "Encontrado" : "No encontrado") . "\n";
-} else {
-    echo "eregi está obsoleto y no está disponible en esta versión de PHP.\n";
-}
-
-// Ejemplo alternativo usando preg_match en lugar de ereg y eregi
-$patron = "/Mundo/";
-if (preg_match($patron, $cadena)) {
-    echo "preg_match (sensible a mayúsculas/minúsculas): Encontrado\n"; // Salida: Encontrado
-} else {
-    echo "preg_match (sensible a mayúsculas/minúsculas): No encontrado\n";
-}
-
-// Ejemplo alternativo usando preg_match con modificador 'i' para insensibilidad a mayúsculas/minúsculas
-$patron_i = "/mundo/i";
-if (preg_match($patron_i, $cadena)) {
-    echo "preg_match (insensible a mayúsculas/minúsculas): Encontrado\n"; // Salida: Encontrado
-} else {
-    echo "preg_match (insensible a mayúsculas/minúsculas): No encontrado\n";
-}
-?>
-
+        // eregi
+        $cadena = "Hola Mundo";
+        if (eregi("mundo", $cadena)) {
+            echo "<p>eregi: La cadena contiene 'mundo' (sin distinguir entre mayúsculas y minúsculas).</p>";
+        }
+    ?>
 </body>
 </html>
